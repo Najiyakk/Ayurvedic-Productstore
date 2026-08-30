@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ShoppingBag,
   ShoppingCart,
@@ -12,6 +12,8 @@ import {
   LogOut,
   ClipboardList,
   Heart,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
@@ -43,6 +45,7 @@ function Home() {
       return [];
     }
   });
+  const productsCarouselRef = useRef(null);
 
   useEffect(() => {
     let mounted = true;
@@ -180,25 +183,37 @@ function Home() {
       ?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollProducts = (direction) => {
+    const carousel = productsCarouselRef.current;
+    if (!carousel) return;
+
+    carousel.scrollBy({
+      left: direction * carousel.clientWidth * 0.85,
+      behavior: "smooth",
+    });
+  };
+
   const userName =
     user?.user_metadata?.full_name ||
     user?.user_metadata?.name ||
     user?.email?.split("@")[0] ||
     "there";
 
+  const brandName = settings?.store_name || "Ayurvedic Beauty";
+
   return (
     <div className="min-h-screen bg-[#f8faf5]">
 
       {/* Navbar */}
       <nav className="sticky top-0 z-50 border-b border-green-100 bg-white">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-3 sm:px-6 sm:py-4">
 
-          {/* Logo */}
+          {/* Logo - always visible in the header */}
           <div className="flex items-center gap-3">
             {settings?.logo_url ? (
               <img
                 src={settings.logo_url}
-                alt={settings.store_name || "Store Logo"}
+                alt={brandName}
                 className="h-14 w-14 rounded-full object-cover"
               />
             ) : (
@@ -207,10 +222,8 @@ function Home() {
               </div>
             )}
 
-            <h1 className="text-xl font-bold text-green-900">
-              {settingsLoading
-                ? "Loading..."
-                : settings?.store_name || "Ayurvedic Beauty"}
+            <h1 className="max-w-24 truncate text-base font-bold text-green-900 sm:max-w-none sm:text-xl">
+              {settingsLoading ? "Loading..." : brandName}
             </h1>
           </div>
 
@@ -255,7 +268,7 @@ function Home() {
           </div>
 
           {/* Login, Register and Cart */}
-          <div className="flex items-center gap-3">
+          <div className="flex shrink-0 items-center gap-1 sm:gap-3">
 
             {user ? (
               <button
@@ -327,6 +340,26 @@ function Home() {
 
           </div>
         </div>
+
+        <div className="border-t border-green-100 md:hidden">
+          <div className="mx-auto flex max-w-7xl gap-1 overflow-x-auto px-4 py-2 text-sm whitespace-nowrap sm:px-6">
+            {[
+              ["Home", "home"],
+              ["Products", "products"],
+              ["Videos", "videos"],
+              ["About", "about"],
+              ["Contact", "contact"],
+            ].map(([label, section]) => (
+              <button
+                key={section}
+                onClick={() => scrollToSection(section)}
+                className="rounded-lg px-3 py-2 font-medium text-green-800 hover:bg-green-50"
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
       </nav>
 
       {/* Hero Section */}
@@ -334,7 +367,7 @@ function Home() {
         id="home"
         className="relative overflow-hidden bg-gradient-to-br from-green-100 via-[#f8faf5] to-green-50"
       >
-        <div className="mx-auto grid min-h-[600px] max-w-7xl items-center gap-12 px-6 py-16 md:grid-cols-2">
+        <div className="mx-auto grid min-h-[560px] max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 md:min-h-[600px] md:grid-cols-2 md:py-16">
 
           {/* Left Content */}
           <div>
@@ -350,7 +383,7 @@ function Home() {
               Natural • Pure • Ayurvedic
             </div>
 
-            <h2 className="text-4xl font-bold leading-tight text-green-950 md:text-6xl">
+            <h2 className="text-4xl font-bold leading-tight text-green-950 sm:text-5xl md:text-6xl">
               Naturally Beautiful.
               <br />
 
@@ -501,7 +534,7 @@ function Home() {
       {/* Products Section */}
       <section
         id="products"
-        className="mx-auto max-w-7xl px-6 py-20"
+        className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20"
       >
 
         <div className="text-center">
@@ -542,13 +575,36 @@ function Home() {
         )}
 
         {!loading && products.length > 0 && (
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <>
+          <div className="mt-8 flex items-center justify-end gap-2 sm:mt-10">
+            <button
+              type="button"
+              onClick={() => scrollProducts(-1)}
+              aria-label="Show previous products"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-green-200 bg-white text-green-800 shadow-sm transition hover:bg-green-50"
+            >
+              <ChevronLeft size={22} />
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollProducts(1)}
+              aria-label="Show next products"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-green-200 bg-white text-green-800 shadow-sm transition hover:bg-green-50"
+            >
+              <ChevronRight size={22} />
+            </button>
+          </div>
+
+          <div
+            ref={productsCarouselRef}
+            className="mt-4 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 [scrollbar-width:thin]"
+          >
 
             {products.map((product) => (
 
               <div
                 key={product.id}
-                className="overflow-hidden rounded-2xl bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                className="w-[82vw] max-w-sm shrink-0 snap-start overflow-hidden rounded-2xl bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:w-[calc(50%-0.625rem)] lg:w-[calc((100%-2.5rem)/3)]"
               >
 
                 {/* Product Image */}
@@ -614,7 +670,7 @@ function Home() {
 
                   </div>
 
-                  <div className="mt-5 flex gap-3">
+                    <div className="mt-5 flex flex-col gap-3 sm:flex-row">
 
                     <button
                       onClick={() => handleBuyNow(product)}
@@ -642,6 +698,7 @@ function Home() {
             ))}
 
           </div>
+          </>
         )}
 
       </section>
@@ -652,7 +709,7 @@ function Home() {
       {/* About Section */}
       <section
         id="about"
-        className="bg-green-100 px-6 py-20"
+        className="bg-green-100 px-4 py-14 sm:px-6 sm:py-20"
       >
         <div className="mx-auto max-w-4xl text-center">
 
@@ -677,7 +734,7 @@ function Home() {
       {/* Contact Section */}
       <section
         id="contact"
-        className="bg-green-900 px-6 py-20 text-white"
+        className="bg-green-900 px-4 py-14 text-white sm:px-6 sm:py-20"
       >
         <div className="mx-auto max-w-7xl">
 
@@ -785,7 +842,7 @@ function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-green-950 px-6 py-6 text-center text-sm text-green-200">
+      <footer className="bg-green-950 px-4 py-6 text-center text-sm text-green-200 sm:px-6">
         © {new Date().getFullYear()}{" "}
         {settings?.store_name || "Ayurvedic Beauty"}.
         All rights reserved.

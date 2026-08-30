@@ -70,12 +70,12 @@ function Dashboard() {
       </div>
 
       {/* Dashboard Options */}
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-3 min-[380px]:grid-cols-2 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
         {menuItems.map((item) => (
           <button
             key={item.name}
             onClick={() => navigate(item.path)}
-            className="flex flex-col items-center rounded-2xl bg-white p-5 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+            className="flex min-w-0 flex-col items-center rounded-2xl bg-white p-4 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:p-5"
           >
             <div className="mb-3 rounded-full bg-green-100 p-3 text-green-800">
               {item.icon}

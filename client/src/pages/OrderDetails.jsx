@@ -60,7 +60,7 @@ function OrderDetails() {
               <h1 className="mt-1 text-3xl font-bold text-green-900">Order Details</h1>
               <p className="mt-2 text-sm text-gray-500">Placed {new Date(order.created_at).toLocaleString()}</p>
             </div>
-            <div className="flex gap-2 text-sm">
+            <div className="flex flex-wrap gap-2 text-sm">
               <span className="rounded-full bg-blue-100 px-3 py-1 font-medium capitalize text-blue-800">Payment: {order.payment_status || "pending"}</span>
               <span className="rounded-full bg-green-100 px-3 py-1 font-medium capitalize text-green-800">Order: {order.status || "pending"}</span>
             </div>
@@ -76,7 +76,7 @@ function OrderDetails() {
             {items.map((item) => (
               <div key={item.id} className="flex items-center gap-4 rounded-xl border p-3">
                 {item.product_image ? <img src={item.product_image} alt={item.product_name} className="h-16 w-16 rounded-lg object-cover" /> : <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-green-50"><Package className="text-green-700" /></div>}
-                <div className="flex-1"><p className="font-semibold">{item.product_name}</p><p className="text-sm text-gray-500">Quantity: {item.quantity}</p></div>
+                <div className="min-w-0 flex-1"><p className="break-words font-semibold">{item.product_name}</p><p className="text-sm text-gray-500">Quantity: {item.quantity}</p></div>
                 <p className="font-bold text-green-800">₹{Number(item.subtotal).toFixed(2)}</p>
               </div>
             ))}

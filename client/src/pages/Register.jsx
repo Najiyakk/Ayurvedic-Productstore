@@ -88,7 +88,7 @@ function Register() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-green-50 px-4">
-      <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
+      <div className="w-full max-w-md rounded-2xl bg-white p-5 shadow-lg sm:p-8">
         <StoreBrand />
 
         <div className="mb-6 text-center">

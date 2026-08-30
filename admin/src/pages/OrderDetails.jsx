@@ -249,8 +249,8 @@ function OrderDetails() {
                     )}
 
                     {/* Product Info */}
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-gray-800">
+                    <div className="min-w-0 flex-1">
+                      <h3 className="break-words font-semibold text-gray-800">
                         {item.product_name}
                       </h3>
 

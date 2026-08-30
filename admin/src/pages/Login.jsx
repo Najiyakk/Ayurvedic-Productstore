@@ -43,7 +43,7 @@ function Login() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-green-100">
-      <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
+      <div className="w-full max-w-md rounded-2xl bg-white p-5 shadow-lg sm:p-8">
         <StoreBrand />
         <h1 className="mb-2 text-center text-3xl font-bold text-green-800">
           Admin Login

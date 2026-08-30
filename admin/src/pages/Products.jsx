@@ -163,7 +163,7 @@ function Products() {
                 </p>
 
                 {/* Product Name */}
-                <h2 className="mt-1 text-lg font-semibold text-gray-800">
+                <h2 className="mt-1 break-words text-lg font-semibold text-gray-800">
                   {product.name}
                 </h2>
 
@@ -197,7 +197,7 @@ function Products() {
                 </p>
 
                 {/* Actions */}
-                <div className="mt-5 grid grid-cols-3 gap-2">
+                <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-3">
 
                   {/* View */}
                   <button
@@ -226,10 +226,11 @@ function Products() {
                     onClick={() =>
                       handleDelete(product.id, product.name)
                     }
-                    className="flex items-center justify-center rounded-lg bg-red-50 px-3 py-2 text-red-600 hover:bg-red-100"
+                    className="col-span-2 flex items-center justify-center gap-1 rounded-lg bg-red-50 px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-100 sm:col-span-1"
                     title="Delete Product"
                   >
                     <Trash2 size={18} />
+                    <span className="sm:hidden">Delete</span>
                   </button>
 
                 </div>

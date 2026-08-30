@@ -77,8 +77,8 @@ function Cart() {
                         <ShoppingBag className="m-6 text-green-700" />
                       )}
                     </div>
-                    <div className="min-w-40 flex-1">
-                      <h2 className="font-semibold text-gray-800">{item.name}</h2>
+                    <div className="min-w-0 flex-1">
+                      <h2 className="break-words font-semibold text-gray-800">{item.name}</h2>
                       <p className="mt-1 text-green-700">₹{item.price}</p>
                     </div>
                     <div className="flex items-center gap-3 rounded-lg border px-2 py-1">

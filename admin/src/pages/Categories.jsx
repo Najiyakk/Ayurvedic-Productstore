@@ -146,19 +146,19 @@ function Categories() {
           categories.map((category) => (
             <div
               key={category.id}
-              className="flex items-center justify-between rounded-xl bg-white p-4 shadow-sm"
+              className="flex min-w-0 items-center justify-between gap-3 rounded-xl bg-white p-4 shadow-sm"
             >
-              <div className="flex items-center gap-3">
+              <div className="flex min-w-0 items-center gap-3">
                 <div className="rounded-lg bg-green-100 p-2 text-green-800">
                   <Tag size={20} />
                 </div>
 
-                <div>
-                  <h3 className="font-medium text-gray-800">
+                <div className="min-w-0">
+                  <h3 className="truncate font-medium text-gray-800">
                     {category.name}
                   </h3>
 
-                  <p className="text-xs text-gray-500">
+                  <p className="truncate text-xs text-gray-500">
                     {category.slug}
                   </p>
                 </div>

@@ -92,7 +92,7 @@ function PaymentHistory() {
       {!loading && payments.length > 0 && (
         <div className="overflow-x-auto rounded-2xl bg-white shadow-sm">
 
-          <table className="w-full">
+          <table className="min-w-[720px] w-full">
 
             <thead className="border-b bg-green-50 text-left">
               <tr>

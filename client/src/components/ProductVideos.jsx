@@ -28,7 +28,7 @@ function ProductVideos() {
   }, []);
 
   return (
-    <section id="videos" className="bg-green-50 px-6 py-20">
+    <section id="videos" className="bg-green-50 px-4 py-14 sm:px-6 sm:py-20">
       <div className="mx-auto max-w-7xl">
         <div className="text-center">
           <p className="font-medium text-green-700">WATCH OUR PRODUCTS</p>

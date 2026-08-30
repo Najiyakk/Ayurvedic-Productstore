@@ -18,14 +18,14 @@ function AdminLayout() {
   };
 
   return (
-    <div className="min-h-screen bg-green-50 p-4 md:p-8">
+    <div className="min-h-screen bg-green-50 p-3 sm:p-4 md:p-8">
 
       {/* Top Bar */}
-      <div className="mb-6 flex items-center justify-between gap-4">
+      <div className="mb-6 flex flex-col items-stretch justify-between gap-2 sm:flex-row sm:items-center sm:gap-4">
         <StoreBrand />
         <button
           onClick={handleLogout}
-          className="flex items-center gap-2 rounded-lg bg-red-500 px-4 py-2 font-medium text-white hover:bg-red-600"
+          className="flex items-center justify-center gap-2 rounded-lg bg-red-500 px-4 py-3 font-medium text-white hover:bg-red-600 sm:py-2"
         >
           <LogOut size={18} />
           Logout

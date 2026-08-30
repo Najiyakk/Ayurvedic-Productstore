@@ -220,7 +220,7 @@ function Instagram() {
       </div>
 
       <div className="mb-8 rounded-2xl bg-white p-5 shadow-sm md:p-7">
-        <div className="mb-5 flex items-center justify-between gap-3">
+        <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
           <h2 className="text-xl font-semibold text-green-900">
             {editingId ? "Edit Video" : "Add New Video"}
           </h2>
@@ -307,7 +307,7 @@ function Instagram() {
           <button
             type="submit"
             disabled={saving}
-            className="flex items-center justify-center gap-2 rounded-xl bg-green-700 px-5 py-3 font-semibold text-white hover:bg-green-800 disabled:cursor-not-allowed disabled:bg-green-400"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-green-700 px-5 py-3 font-semibold text-white hover:bg-green-800 disabled:cursor-not-allowed disabled:bg-green-400 sm:w-auto"
           >
             {saving ? (
               "Saving..."

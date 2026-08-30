@@ -292,7 +292,7 @@ function Checkout() {
               </div>
 
               {/* State + Pincode */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
 
                 <div>
                   <label className="mb-1 block text-sm font-medium">
@@ -336,7 +336,7 @@ function Checkout() {
                   Payment Method
                 </label>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
 
                   {/* COD */}
                   <label
@@ -402,7 +402,7 @@ function Checkout() {
           </div>
 
           {/* Order Summary */}
-          <div className="h-fit rounded-2xl bg-white p-6 shadow-sm md:p-8">
+          <div className="h-fit rounded-2xl bg-white p-5 shadow-sm sm:p-6 md:p-8">
 
             <h2 className="text-xl font-bold text-green-900">
               Order Summary
