@@ -1,0 +1,61 @@
+<svg width="420" height="420" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wing" x1="90" y1="45" x2="330" y2="350" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E5FF8A" stop-opacity=".98"/>
+      <stop offset=".42" stop-color="#7DDE21" stop-opacity=".98"/>
+      <stop offset="1" stop-color="#087A35" stop-opacity=".96"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="120" y1="40" x2="315" y2="350" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B9FF35"/>
+      <stop offset="1" stop-color="#087A35"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .wing {
+      transform-box: fill-box;
+      animation: wing-flap 420ms ease-in-out infinite alternate;
+    }
+    .wing-left {
+      transform-origin: 100% 92%;
+    }
+    .wing-right {
+      transform-origin: 0% 92%;
+      animation-name: wing-flap-right;
+      animation-delay: -90ms;
+    }
+    @keyframes wing-flap {
+      from { transform: rotate(0deg); }
+      45% { transform: rotate(11deg); }
+      to { transform: rotate(-2deg); }
+    }
+    @keyframes wing-flap-right {
+      from { transform: rotate(0deg); }
+      45% { transform: rotate(-11deg); }
+      to { transform: rotate(2deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .wing { animation: none; }
+    }
+  </style>
+  <g stroke="#16833D" stroke-linecap="round" stroke-linejoin="round">
+    <path class="wing wing-left" d="M204 211C153 190 78 148 83 72C87 19 143 41 184 91C210 123 216 166 204 211Z" fill="url(#wing)" stroke-width="7"/>
+    <path class="wing wing-right" d="M216 211C266 186 337 137 326 68C318 18 273 47 242 90C217 124 209 166 216 211Z" fill="url(#wing)" stroke-width="7"/>
+    <path class="wing wing-left" d="M204 215C157 219 69 226 56 294C47 342 97 358 153 327C190 306 207 263 204 215Z" fill="url(#wing)" stroke-width="7"/>
+    <path class="wing wing-right" d="M216 215C262 216 349 225 362 289C372 338 322 356 267 326C232 306 213 266 216 215Z" fill="url(#wing)" stroke-width="7"/>
+    <path d="M210 201C205 232 205 268 211 302" stroke="#111A12" stroke-width="10"/>
+    <path d="M211 215L119 101M211 220L304 91M208 241L93 285M215 242L330 285" stroke="#D9FF70" stroke-width="4" opacity=".9"/>
+    <path d="M197 116C176 86 165 68 144 58M225 116C245 82 257 65 276 55" stroke="#E4FF88" stroke-width="4" opacity=".9"/>
+    <path d="M202 205C199 193 207 184 214 205C221 184 229 194 218 207" fill="#142016" stroke="#111A12" stroke-width="4"/>
+    <ellipse cx="210" cy="216" rx="10" ry="23" fill="#111A12" stroke="#0A4F27" stroke-width="4"/>
+    <circle cx="210" cy="193" r="9" fill="#111A12" stroke="#0A4F27" stroke-width="4"/>
+    <path d="M205 188C194 172 187 165 177 159M215 188C227 171 235 164 245 157" stroke-width="3"/>
+    <circle cx="177" cy="159" r="3" fill="#111A12" stroke="none"/>
+    <circle cx="245" cy="157" r="3" fill="#111A12" stroke="none"/>
+    <g fill="#C6FF4A" stroke="none" opacity=".9">
+      <circle cx="112" cy="77" r="8"/><circle cx="103" cy="113" r="6"/><circle cx="130" cy="142" r="9"/>
+      <circle cx="297" cy="75" r="7"/><circle cx="306" cy="111" r="6"/><circle cx="280" cy="140" r="8"/>
+      <circle cx="82" cy="287" r="7"/><circle cx="112" cy="315" r="6"/><circle cx="145" cy="300" r="7"/>
+      <circle cx="338" cy="284" r="7"/><circle cx="309" cy="313" r="6"/><circle cx="276" cy="300" r="7"/>
+    </g>
+  </g>
+</svg>
