@@ -209,7 +209,7 @@ function Home() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-3 sm:px-6 sm:py-4">
 
           {/* Logo - always visible in the header */}
-          <div className="flex items-center gap-3">
+          <div className="flex min-w-0 flex-1 items-center gap-3">
             {settings?.logo_url ? (
               <img
                 src={settings.logo_url}
@@ -222,7 +222,7 @@ function Home() {
               </div>
             )}
 
-            <h1 className="max-w-24 truncate text-base font-bold text-green-900 sm:max-w-none sm:text-xl">
+            <h1 className="min-w-0 break-words text-base font-bold leading-tight text-green-900 sm:text-xl">
               {settingsLoading ? "Loading..." : brandName}
             </h1>
           </div>
