@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabase";
+import StoreBrand from "../components/StoreBrand";
 
 function Login() {
   const navigate = useNavigate();
@@ -43,6 +44,7 @@ function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-green-100">
       <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
+        <StoreBrand />
         <h1 className="mb-2 text-center text-3xl font-bold text-green-800">
           Admin Login
         </h1>
